@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block body %}
+    <section class="section">
+        <div class="container">
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                      <a href="{% url 'diary:add' %}"> <button class="button button2">Add new entry</button></a>
+                        
+                    </div>
+                </div>
+            </article>
+            {% for note in notes %}
+                    <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                            <p>
+                                <strong>{{note.pub_date}}</strong>
+                                <br>
+                                {{note|truncatewords:15}}
+                                <br>
+                                <a href="{% url 'diary:detail' note.id %}">show the note</a>
+                            </p>
+
+                        
+                     </div>
+                    </div>
+                </article>
+            {% endfor %}
+
+        </div>
+    </section>
+{% endblock body %}
